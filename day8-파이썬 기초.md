@@ -1,7 +1,7 @@
-#day8 - 파이썬 기초
+# day8 - 파이썬 기초
 
 
-##변수
+## 변수
 
 **변수의 이름 제한** : 소문자, 대문자, 숫자, 언더스코어(_)
 
@@ -15,12 +15,12 @@
 **type( )**:  괄호 속 변수의 type 을 출력
 	
 
-##숫자
+## 숫자
 
 **수학 연산자**
 
 |연산자|설명|예|결과|
-|----|----|---|---|
+|:----:|:----:|:---:|:---:|
 |+|더하기|32+7|39|
 |-|뺴기|82-2|80|
 |*|곱하기|3*7|21|
@@ -35,7 +35,7 @@
 8진수(octal): 0o 로 시작
 16진수(hex): 0x 로 시작
 
-##문자열
+## 문자열
 
 **입력 방법**
 
@@ -171,9 +171,9 @@ Out[25]: '37 3.14 fastcampus WPS'
 
 ```
 
-##시퀀스 타입
+## 시퀀스 타입
 
-###list
+### list
 
 **list 생성**
 
@@ -199,7 +199,9 @@ In [51]: list2[-1:-len(list2)+1:-1]
 Out[51]: ['d', 'n', 'e', 'g', 'e', 'l', ' ', 'f', 'o', ' ', 'e', 'u', 'g', 'a']
 ```
 
-**list 병합(extends, +=)**
+**list 병합(extend, +=)**
+
+extend
 
 ```
 In [68]: fruits.extend(colors)
@@ -207,4 +209,241 @@ In [68]: fruits.extend(colors)
 In [69]: fruits
 Out[69]: ['apple', 'banana', 'melon', 'red', 'green', 'blue']
 ```
++=
 
+```
+In [70]: fruits += colors
+
+In [71]: fruits
+Out[71]: ['apple', 'banana', 'melon', 'red', 'green', 'blue', 'red', 'green', 'blue']
+```
+
+**특정 위치에 list 항목 추가(insert)**
+
+```
+In [79]: fruits.insert(1, 'mango')
+
+In [80]: fruits
+Out[80]: 
+['apple', 'mango', 'banana', 'melon',  'red','green', 'blue', 'red', 'green', 'blue']
+ ```
+ 
+ **특정 위치 list 항목 삭제 (del)**
+ 
+ ```
+ In [81]: del fruits[0]
+
+In [82]: fruits
+Out[82]: ['mango', 'banana', 'melon', 'red', 'green', 'blue', 'red', 'green', 'blue']
+```
+
+**값으로 list 삭제(remove)**
+
+```
+In [83]: fruits.remove('banana')
+
+In [84]: fruits
+Out[84]: ['mango', 'melon', 'red', 'green', 'blue', 'red', 'green', 'blue']
+```
+
+**list 항목 추출 후 삭제(pop)**
+
+```
+In [85]: fruits.pop(-3)
+Out[85]: 'red'
+
+In [86]: fruits
+Out[86]: ['mango', 'melon', 'red', 'green', 'blue', 'green', 'blue']
+```
+
+**값으로 list항목 오프셋 찾기(index)**
+
+```
+In [89]: fruits.index('green')
+Out[89]: 3
+```
+
+**값 세기(count)**
+
+```
+In [90]: fruits.count('green')
+Out[90]: 2
+```
+
+**정렬하기 (sort, sorted)**
+
+```
+In [96]: sorted(fruits)
+Out[96]: ['blue', 'blue', 'green', 'green', 'mango', 'melon', 'red']
+
+In [97]: fruits
+Out[97]: ['mango', 'melon', 'red', 'green', 'blue', 'green', 'blue']
+
+In [98]: fruits.sort()
+
+In [99]: fruits
+Out[99]: ['blue', 'blue', 'green', 'green', 'mango', 'melon', 'red']
+```
+
+### tuple
+
+**튜플 생성**
+
+```
+In [104]: colors = 'red',
+
+In [105]: colors
+Out[105]: ('red',)
+
+In [106]: fruits='apple', 'banana'
+
+In [107]: fruits
+Out[107]: ('apple', 'banana')
+```
+**튜플 언패킹**
+
+```
+In [107]: fruits
+Out[107]: ('apple', 'banana')
+
+In [108]: f1, f2 =fruits
+
+In [109]: f1
+Out[109]: 'apple'
+
+In [110]: f2
+Out[110]: 'banana'
+```
+
+**튜플 함수를 이용하여 list `>>` tuple**
+
+```
+In [121]: list1
+Out[121]: ['daham', 'hi', 'hello', 'call']
+
+In [122]: tuple1=tuple(list1)
+
+In [123]: tuple1
+Out[123]: ('daham', 'hi', 'hello', 'call')
+```
+
+**list 함수를 이용하여 tuple `>>` list**
+
+```
+In [125]: list2=list(tuple1)
+
+In [126]: list2
+Out[126]: ['daham', 'hi', 'hello', 'call']
+```
+
+**join함수를 이용하여 튜플 및 list 원소들 결합**
+
+```
+In [129]: sum1=' '.join(list2)
+
+In [130]: sum1
+Out[130]: 'daham hi hello call'
+```
+
+##딕셔너리
+
+###딕셔너리: key-value 형태로 항목을 가지는 자료구조
+
+**딕셔너리 생성**
+
+```
+>>> empty_dict2 = dict()
+>>> empty_dict2
+{}
+```
+
+**형변환**
+
+```
+>>> sample = [[1,2],[3,4],[5,6]]
+>>> dict(sample)
+{1: 2, 3: 4, 5: 6}
+```
+
+**항목 찾기/추가/변경 [key]**
+
+```
+>>> sample = [[1,2],[3,4],[5,6]]
+>>> dict(sample)
+{1: 2, 3: 4, 5: 6}
+```
+
+**결합 (update)**
+
+```
+>>> com_dict.update(champion)
+>>> com_dict
+{'Ahri': 'the Nine-Tailed Fox', 'Ezreal': 'the Prodigal Explorer', 'Teemo': 'the Swift Scout', 'Lux': 'Demacia'}
+```
+
+**삭제 (del)**
+
+```
+>>> dict1
+{1: 1, 2: 2, 3: 3, 4: 4}
+>>> del dict1[1]
+>>> dict1
+{2: 2, 3: 3, 4: 4}
+```
+
+**전체 삭제 (clear)**
+
+```
+>>> dict1.clear()
+>>> dict1
+{}
+```
+
+**모든 key값 얻기 keys()**
+
+```
+>>> dict2.keys()
+dict_keys([1, 2, 3, 4, 5])
+```
+
+**모든 key-value값 얻기 `>>`튜플로 반환**
+
+```
+>>> dict2.items()
+dict_items([(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)])
+```
+
+**복사하기 copy()**
+
+```
+>>> dict3=dict2.copy()
+>>> dict3
+{1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
+```
+## 셋 (set)
+
+### set 생성
+
+```
+>>> empty_set =set()
+>>> champions={'lux','ahri','ezreal'}
+```
+
+### set 형변환
+
+```
+>>> list3
+['d', 'a', 'h', 'a', 'm', 'd', 'a', 'h', 'a', 'm']
+>>> set3=set(list3)
+>>> set3
+{'h', 'm', 'a', 'd'}
+```
+**set을 사용하면** 모든 중복된 값들을 다 제거할 수 있다.  
+**문자열, 리스트, 튜플, 딕셔너리 모두 set으로 변환할 수 있음**
+
+
+# 정리
+
+
+## 삭제 방법
+list1
