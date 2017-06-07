@@ -1,0 +1,102 @@
+# day22 - 장고 기초 (Field reference)
+
+
+## Field options
+
+### null
+
+null = True
+
+* Boolean Field에서 null filed를 사용하려면 NullBooleanField를 사용해야 한다.
+
+### blank
+
+### choices
+
+choices를 사용하면 위젯에서 선택상자가 나타난다.
+ex)
+
+```
+YEAR_IN_SCHOOL_CHOICES = (
+    ('FR', 'Freshman'),
+    ('SO', 'Sophomore'),
+    ('JR', 'Junior'),
+    ('SR', 'Senior'),
+)
+```
+
+
+### primary_key
+
+
+>primary_key=True implies null=False and unique=True.
+
+
+
+>Only one primary key is allowed on an object.
+
+
+### unique_for_date
+
+Set this to the name of a _**DateField**_ or _**DateTimeField**_ to require that this dield be unique for the value of the date field
+
+For example, if you have a field _**title**_ that has _**unique\_for\_date="pub\_date"**_, then Django wouldn't allow the entry of two records with the same _**title**_ and _**pub\_date**_
+
+
+### verbose_name
+
+A human-readable name for the field. If the verbose name isn't given, Django will automatically create it using the field's attribute name, converting underscores to spaces
+
+## Field types
+
+### AutoField
+자동으로 숫자가 증가하는 field
+
+### BooleanField
+
+* 위젯에서 체크박스의 기본형태를 가진다.
+* null 사용하려면 NullBooleanField 사용해야 한다.
+* BooleanField는 기본으로 None이 입력되어 있음 
+
+### CharField
+
+### DateField
+
+note: The **auto_now** and **auto\_now\_add** options will always use the date in the default imezone at the moment of creation or update. If you need something different, you may want to consider simply using your own callable default or overriding save() instead of using **auto_now** or **auto\_now\_add**; or using **DateTimeField** instead of a **DateField** and deciding how to handle the conversion from datetime to date at display time.
+
+### FloatField vs. DecimalField
+
+The **FloatField** class is sometimes mixed up with the **DecimalField** class. Although they both represent real numbers, they represent those numbers differently. **FloatField** uses Python's **float** type interneally. while **DecimalField** uses Python's **Decimal** type. For information on the difference between the two, see Pythons;s documentation for 
+the **decimal** module
+
+### ImageField
+
+ImageField has **height** and **width** attributes
+
+ImageField.height_field
+ImageField.width_field
+
+### IntegerField
+
+### SlugField
+
+기본으로 max_length가 50으로 되어있다.
+
+### TimeField
+TimeField(auto_now=False, auto_now_add=False, **option)
+
+
+### URLField
+
+<hr>
+<hr>
+
+
+## Relationship Field
+
+### ForeignKey
+```
+ForeignKey(OtherModel, on_delete, **options)
+```
+
+
